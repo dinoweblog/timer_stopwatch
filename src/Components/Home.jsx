@@ -31,8 +31,9 @@ const Div = styled.div`
 
 export const Home = () => {
   const [show, setShow] = useState("timer");
-  const [timerActiveClass, setTimerActiveClass] = useState("");
+  const [timerActiveClass, setTimerActiveClass] = useState("active");
   const [stopwatchActiveClass, setStopwatchActiveClass] = useState("");
+  const hoursMinSecs = { hours: 1, minutes: 20, seconds: 40 };
   return (
     <Div>
       <h1>Time & Stopwatch</h1>
@@ -59,7 +60,11 @@ export const Home = () => {
             Stopwatch
           </button>
         </div>
-        {show === "timer" ? <Timer /> : <Stopwatch />}
+        {show === "timer" ? (
+          <Timer hoursMinSecs={hoursMinSecs} />
+        ) : (
+          <Stopwatch />
+        )}
       </div>
     </Div>
   );
